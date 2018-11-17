@@ -28,6 +28,8 @@ if __name__ == "__main__":
         mpi_rank = mpi_comm.Get_rank()
     else:
         mpi_rank = 0
+
+    print(mpi_rank)
         
     # Parse arguments
     parser = ArgumentParser()
