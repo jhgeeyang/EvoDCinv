@@ -16,7 +16,7 @@ __all__ = [ "ThomsonHaskell" ]
 
 
 class ThomsonHaskell:
-    
+## wavetype     
     _WTYPE = [ "rayleigh", "love" ]
     
     """
@@ -27,7 +27,7 @@ class ThomsonHaskell:
     
     Parameters
     ----------
-    velocity_model : ndarray
+    velocity_model : ndarray - P S den thick
         Velocity model. Each row defines the layer parameters in the following
         order: P-wave velocity (m/s), S-wave velocity (m/s), density (kg/m3)
         and thickness (m).
@@ -39,6 +39,7 @@ class ThomsonHaskell:
             raise ValueError("velocity_model must be a 2-D ndarray")
         if velocity_model.shape[1] != 4:
             raise ValueError("velocity_model must have 4 columns")
+        ## if OK
         else:
             self._velocity_model = velocity_model
         ratio = velocity_model[:,0] / velocity_model[:,1]
