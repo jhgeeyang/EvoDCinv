@@ -103,4 +103,6 @@ if __name__ == "__main__":
     fig1.tight_layout()
     fig2.tight_layout()
     fig1.show()
+    plt.savefig('foo2.png')
     fig2.show()
+    plt.savefig('foo3.png')

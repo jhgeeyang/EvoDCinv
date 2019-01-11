@@ -42,10 +42,16 @@ if __name__ == "__main__":
     outdir = "output"               # Output directory
     
     # Inversion boundaries
+    # - params
+    # - beta: S-wave boundaries in m/s
     beta = np.array([ [ 100., 1000. ], [ 500., 2000. ], [ 500., 2000. ] ])
+    # - NOTE: final layer 
     thickness = np.array([ [ 100., 1000. ], [ 100., 500. ], [ 99999., 99999. ] ])
     
     # Initialize dispersion curves
+    # - param in tuple. filename, wtype, mode
+    # data- frequency list - phase vel
+    # - 97 data points in the example
     disp_param = [
         ( "data/rayleigh_mode0.txt", "rayleigh", 0 ),
         ( "data/rayleigh_mode1.txt", "rayleigh", 1 ),
@@ -65,17 +71,21 @@ if __name__ == "__main__":
     opt_kws = dict(solver = "cpso")
         
     # Multiple inversions
+    # - first proc make the folder
     if mpi_rank == 0:
         starttime = time.time()
         os.makedirs(outdir, exist_ok = True)
         progress(-1, max_run, "perc", prefix = "Inverting dispersion curves: ")
         
+    # list of layered models
     models = []
     for i in range(max_run):
         lm = LayeredModel()
         lm.invert(dcurves, beta, thickness, ny = ny, n_threads = args.num_threads,
                   evo_kws = evo_kws, opt_kws = opt_kws)
         if mpi_rank == 0:
+            # inversion results are saved in pickle
+            # whole lm object
             lm.save("%s/run%d.pickle" % (outdir, i+1))
             models.append(deepcopy(lm))
             progress(i, max_run, "perc", prefix = "Inverting dispersion curves: ")

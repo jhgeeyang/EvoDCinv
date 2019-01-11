@@ -137,6 +137,7 @@ class LayeredModel:
             evo_kws["snap"] = True
         
         args = ( ny, n_threads )
+        # get the lowest, highest value from index 0,1
         lower = np.concatenate((beta[:,0], thickness[:,0], np.full(self._n_layers, 1.51)))
         upper = np.concatenate((beta[:,1], thickness[:,1], np.full(self._n_layers, 2.19)))
         ea = Evolutionary(self._costfunc, lower, upper, args = args, **evo_kws)

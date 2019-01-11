@@ -19,6 +19,7 @@ if __name__ == "__main__":
     # Parameters
     vel = np.loadtxt("data/true_model.txt")
     modes = [ int(i) for i in np.arange(19) ]
+    # frequency map
     fmin, fmax, df = 0.1, 10., 0.1
     f = np.arange(fmin, fmax+df, df)
     ny = 200
@@ -34,6 +35,7 @@ if __name__ == "__main__":
     th = ThomsonHaskell(vel)
     th.propagate(f, ny = ny, domain = "fc", n_threads = n_threads)
     th.plot(axes = ax1)
+    # - th pick curves and outputs curve list
     dcurves = th.pick(modes)
     for dcurve in dcurves:
         dcurve.plot(axes = ax1, plt_kws = dict(color = "white", linewidth = 0.5))
@@ -50,3 +52,4 @@ if __name__ == "__main__":
 
     fig.tight_layout()
     fig.show()
+    plt.savefig('foo.png')
