@@ -141,8 +141,10 @@ class LayeredModel:
         lower = np.concatenate((beta[:,0], thickness[:,0], np.full(self._n_layers, 1.51)))
         upper = np.concatenate((beta[:,1], thickness[:,1], np.full(self._n_layers, 2.19)))
         ea = Evolutionary(self._costfunc, lower, upper, args = args, **evo_kws)
+        # no starting model
         xopt, gfit = ea.optimize(**opt_kws)
         self._misfit = gfit
+        # output model is 1D list
         self._model = np.array(xopt, dtype = dtype)
         self._misfits = np.array(ea.energy, dtype = dtype)
         self._models = np.array(ea.models, dtype = dtype)
@@ -152,6 +154,7 @@ class LayeredModel:
     
     def _costfunc(self, x, *args):
         ny, n_threads = args
+        print("This is x "+str(x))
         vel = params2lay(x)
         misfit = 0.
         count = 0
@@ -162,6 +165,7 @@ class LayeredModel:
                 return np.Inf
             else:
                 dc_calc = th.pick([ dcurve.mode ])
+                # if the picking has non-trivial result
                 if dc_calc[0].npts > 0:
                     dc_obs = np.interp(dc_calc[0].faxis, dcurve.faxis, dcurve.phase_velocity)
                     misfit += np.sum(np.square(dc_obs - dc_calc[0].phase_velocity))

@@ -39,7 +39,7 @@ if __name__ == "__main__":
     # Parameters
     ny = 200                        # Number of velocity discretization points
     max_run = 10                    # Number of runs
-    outdir = "output"               # Output directory
+    outdir = "test"               # Output directory
     
     # Inversion boundaries
     # - params
