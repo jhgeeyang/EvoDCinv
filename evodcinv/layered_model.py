@@ -154,11 +154,15 @@ class LayeredModel:
     
     def _costfunc(self, x, *args):
         ny, n_threads = args
+        # didn't work..
+        # anyhow: get x after passed as a param in Evol Class
         print("This is x "+str(x))
+        # parameter to velocity layer
         vel = params2lay(x)
         misfit = 0.
         count = 0
         for i, dcurve in enumerate(self._dcurves):
+            # velocity  + dcurve -> thomsen -> 
             th = ThomsonHaskell(vel, dcurve.wtype)
             th.propagate(dcurve.faxis, ny = ny, domain = "fc", n_threads = n_threads)
             if np.any([ np.isnan(sec) for sec in th._panel.ravel() ]):
@@ -177,7 +181,8 @@ class LayeredModel:
             return np.sqrt(misfit / count)
         else:
             return np.Inf
-    
+
+    # overriding function exists below params2lay(x)
     def params2lay(self):
         """
         Convert parameters to a layered velocity model usable by ThomsonHaskell
@@ -272,6 +277,7 @@ class LayeredModel:
         filename: str
             Pickle filename.
         """
+        # just pickle dump
         with open(filename, "wb") as f:
             pickle.dump(self, f, protocol = pickle.HIGHEST_PROTOCOL)
     
