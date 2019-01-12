@@ -156,6 +156,7 @@ class LayeredModel:
         ny, n_threads = args
         # didn't work..
         # anyhow: get x after passed as a param in Evol Class
+        # get the unstandardized model as a input in Evol for Evaluation
         print("This is x "+str(x))
         # parameter to velocity layer
         vel = params2lay(x)
@@ -357,6 +358,7 @@ def params2lay(x):
         the following order: P-wave velocity (m/s), S-wave velocity (m/s),
         density (kg/m3) and thickness (m).
     """
+    # How to read x 
     n_layers = len(x) // 3
     beta = x[:n_layers]
     alpha = beta * x[2*n_layers:]
