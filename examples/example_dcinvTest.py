@@ -39,14 +39,14 @@ if __name__ == "__main__":
     # Parameters
     ny = 200                        # Number of velocity discretization points
     max_run = 10                    # Number of runs
-    outdir = "test_0114"               # Output directory
+    outdir = "test_0118_4layer"               # Output directory
     
     # Inversion boundaries
     # - params
     # - beta: S-wave boundaries in m/s
-    beta = np.array([ [ 100., 1000. ], [ 500., 2500. ], [ 1000., 4000. ] ])
+    beta = np.array([ [ 100., 1000. ], [ 500., 2500. ], [ 1000., 4000. ],[1200.,4200. ]])
     # - NOTE: final layer 
-    thickness = np.array([ [ 100., 1000. ], [ 100., 500. ], [ 99999., 99999. ] ])
+    thickness = np.array([ [ 100., 1000. ], [ 100., 500. ],[100.,1000.] ,[ 99999., 99999. ] ])
     
     # Initialize dispersion curves
     # - param in tuple. filename, wtype, mode
@@ -64,7 +64,8 @@ if __name__ == "__main__":
         dcurves.append(dc)
 
     # Evolutionary optimizer parameters
-    evo_kws = dict(popsize = 20, max_iter = 200, constrain = True, mpi = mpi_exist)
+    ## Edit this for loop control
+    evo_kws = dict(popsize = 20, max_iter = 30, constrain = True, mpi = mpi_exist)
     opt_kws = dict(solver = "cpso")
         
     # Multiple inversions
