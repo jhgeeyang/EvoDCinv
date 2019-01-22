@@ -1,4 +1,7 @@
+import matplotlib.pyplot as plt
+import numpy as np
 import re
+
 # same structure
 # Label
 # numLayer fixed - 4 here.
@@ -44,5 +47,18 @@ for model in modelList:
     print(model.VS)
     print("THICK")
     print(model.thickness)
+    
+# Let's plot this
+fig, ax = plt.subplots()
+for model in modelList:
+    ax.plot(model.VP,np.cumsum(model.thickness),'o--')
+    ax.xaxis.tick_top()
+
+    ax.set_ylabel('depth')
+    ax.set_ylim(4000, 0)
+#ax.set_xlim(0, 25)
+    ax.set_xlabel('vel - depth plot')
+
+plt.show()
 
             
