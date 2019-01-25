@@ -52,9 +52,10 @@ for curve in curvelist:
         # Inversion boundaries
         # - params
         # - beta: S-wave boundaries in m/s
-        beta = np.array([ [ 100., 1000. ], [ 500., 2500. ], [ 1000., 4000. ],[1200.,4200. ]])
+        beta = np.array([ [ 100., 1000. ], [ 500., 2500. ], [ 1000., 4000. ]])#,[1200.,4200. ]])
         # - NOTE: final layer 
-        thickness = np.array([ [ 100., 1000. ], [ 100., 500. ],[100.,1000.] ,[ 99999., 99999. ] ])
+# [100.,1000.]
+        thickness = np.array([ [ 100., 1000. ], [ 100., 500. ], [ 99999., 99999. ] ])
         
         # Initialize dispersion curves
         # - param in tuple. filename, wtype, mode
@@ -100,7 +101,7 @@ for curve in curvelist:
         if mpi_rank == 0:
 # useful Output part
 # but anyhow only one output is written(4 in console)
-            with open(curve[20:-4]+'.txt','w') as f:
+            with open(curve[20:-4]+'_1_lay_3.txt','w') as f:
                 saved_stdout = sys.stdout
                 sys.stdout = f
                 print("\n")

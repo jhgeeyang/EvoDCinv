@@ -53,7 +53,7 @@ if __name__ == "__main__":
     # data- frequency list - phase vel
     # - 97 data points in the example
     disp_param = [
-        ( "data/picked_das.txt", "rayleigh", 0 ),
+        ( "data/picked_das_decon.txt", "rayleigh", 0 ),
         ]
     
     dcurves = []
