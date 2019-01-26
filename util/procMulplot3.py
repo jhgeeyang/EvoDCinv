@@ -3,6 +3,7 @@ from mpl_toolkits.mplot3d import Axes3D  # noqa: F401 unused import
 import matplotlib.pyplot as plt
 import numpy as np
 import re
+from scipy import interpolate
 from scipy.interpolate import griddata
 
 # same structure
@@ -186,13 +187,48 @@ print("\n"*10)
 print(len(Y))
 print("\n"*10)
 print(len(Z))
+# zMat does not have depth val
 zMat = np.reshape(Z,(19,3))
-print(zMat)
+xMat = np.reshape(X,(19,3))
+zMatT = np.transpose(zMat)
+xMatT = np.transpose(xMat)
+# add extra data - 0km 450m/s
+extraX = np.hstack((np.zeros((xMat.shape[0],1),dtype=xMat.dtype),xMat))
+extraZ = np.hstack((np.full((zMat.shape[0],1),450.0),zMat))
+for k in range(extraZ.shape[0]):
+    if extraX[k][3]>4500:
+        extraX[k][3]=4500.0
+print("xmatT")
+print(xMat[1])
+print(zMat[1])
+print(extraX[1])
+print(extraZ[1])
+
+nXlist=[]
+nYlist=[]
+nZlist=[]
+for k in range(extraZ.shape[0]):
+    f = interpolate.interp1d(extraX[k],extraZ[k])
+    nYlist.append(np.full((45),2.4+0.12*k))
+
+# 1D 0~4500
+    xnew= np.arange(extraX[k].min(),extraX[k].max(),100)
+    znew = f(xnew)
+    nXlist.append(xnew)
+    nZlist.append(znew)
+#print(nXlist)# 19*45
+print(np.asarray(nXlist).shape)# 19*45
+print(np.asarray(nYlist).shape)# 19*45
+#plt.plot(extraX[1],extraZ[1],'o',xnew,znew,'-')
+CS =plt.contourf(np.asarray(nXlist),np.asarray(nYlist),np.asarray(nZlist),20,cmap=plt.cm.rainbow,
+        vmax=5000,vmin=0)
+plt.colorbar()
+plt.show()
 fig = plt.figure()
 #plt.matshow(np.transpose(zMat))
 ax1 =fig.add_subplot(111)
-cax = ax1.matshow(np.transpose(zMat), interpolation='nearest')
-fig.colorbar(cax)
+#cax = ax1.matshow(np.transpose(zMat), interpolation='nearest')
+#fig.colorbar(cax)
 
 
 #ax1.scatter(X,Y,Z)

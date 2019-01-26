@@ -101,7 +101,7 @@ for curve in curvelist:
         if mpi_rank == 0:
 # useful Output part
 # but anyhow only one output is written(4 in console)
-            with open(curve[20:-4]+'_1_lay_3.txt','w') as f:
+            with open(curve[20:-4]+'_2_lay_3.txt','w') as f:
                 saved_stdout = sys.stdout
                 sys.stdout = f
                 print("\n")
