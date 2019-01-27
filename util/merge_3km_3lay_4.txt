@@ -1,0 +1,247 @@
+
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1029.62		478.87		101.19
+		5240.26		2499.80		500.00
+		2833.34		1513.85		99999.0
+       misfit: 298.80
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 139.49 seconds
+
+
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1091.53		577.51		184.08
+		2882.75		1527.29		270.57
+		4719.39		2354.32		99999.0
+       misfit: 20.54
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 298.67 seconds
+
+
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1631.57		1000.00		359.33
+		3505.86		1601.39		266.56
+		4513.43		2517.23		99999.0
+       misfit: 18.36
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 227.01 seconds
+
+
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1432.20		856.08		164.11
+		1623.62		753.87		206.57
+		4696.37		2436.11		99999.0
+       misfit: 22.24
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 215.20 seconds
+
+
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1721.61		1000.00		420.78
+		4223.96		2392.53		401.40
+		4651.21		2435.13		99999.0
+       misfit: 28.84
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 241.47 seconds
+
+
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1585.88		926.21		369.95
+		3591.10		1891.72		137.05
+		4440.10		2391.99		99999.0
+       misfit: 33.49
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 255.57 seconds
+
+
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1742.18		968.25		402.49
+		3953.29		2254.85		451.09
+		4888.35		2364.09		99999.0
+       misfit: 45.56
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 240.40 seconds
+
+
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1970.89		941.86		407.60
+		4639.20		2118.36		468.41
+		4514.59		2223.37		99999.0
+       misfit: 50.46
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 292.67 seconds
+
+
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1889.77		944.53		278.37
+		2753.78		1265.16		300.34
+		4788.39		2390.53		99999.0
+       misfit: 29.70
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 230.16 seconds
+
+
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		2116.13		990.10		322.93
+		2375.53		1190.45		170.77
+		3960.03		2310.51		99999.0
+       misfit: 26.87
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 234.37 seconds
+
+
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1866.98		1000.00		104.32
+		2272.75		1120.65		428.81
+		4230.16		2687.48		99999.0
+       misfit: 22.09
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 214.31 seconds
+
+
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		2078.89		976.29		433.45
+		3930.61		2055.63		422.22
+		4653.45		2875.49		99999.0
+       misfit: 32.77
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 233.96 seconds
+
+
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		2098.57		998.14		418.11
+		3524.14		1951.63		470.12
+		5145.87		3205.31		99999.0
+       misfit: 24.39
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 207.91 seconds
+
+
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1154.01		557.15		156.25
+		2619.35		1579.42		238.79
+		4970.69		2808.15		99999.0
+       misfit: 41.23
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 237.66 seconds
+
+
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1813.92		1000.00		361.52
+		3238.39		1506.31		282.19
+		6143.20		3132.85		99999.0
+       misfit: 33.26
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 242.26 seconds
+
+
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1415.86		779.92		100.00
+		4983.42		2499.93		263.12
+		3741.99		2338.83		99999.0
+       misfit: 196.22
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 179.66 seconds
+
+
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1136.23		527.71		148.87
+		5024.08		2500.00		169.36
+		4794.33		2802.43		99999.0
+       misfit: 58.40
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 182.49 seconds
+
+
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		634.85		385.23		100.00
+		3130.63		1873.69		380.89
+		5510.32		3124.71		99999.0
+       misfit: 38.89
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 189.33 seconds
+
+
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		685.32		344.15		100.01
+		4123.03		2500.00		496.81
+		4061.62		1884.27		99999.0
+       misfit: 306.67
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 140.72 seconds
+

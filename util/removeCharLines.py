@@ -5,7 +5,7 @@ import itertools
 #filename ='data_60_4km_D_002.txt'
 #filename='procD_n604km_002.txt' 
 #filename ='D_merg2.txt'
-filename = 'merg_3km_3lay_2.txt'
+filename = 'merge_3km_3lay_4.txt'
 
 with open(filename, 'r') as myfile:
 # this will read the whole file / cf.) readlines()

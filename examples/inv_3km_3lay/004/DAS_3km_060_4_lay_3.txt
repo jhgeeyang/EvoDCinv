@@ -1,0 +1,13 @@
+
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1029.62		478.87		101.19
+		5240.26		2499.80		500.00
+		2833.34		1513.85		99999.0
+       misfit: 298.80
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 139.49 seconds
+

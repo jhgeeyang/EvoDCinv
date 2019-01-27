@@ -3,7 +3,7 @@ from mpl_toolkits.mplot3d import Axes3D  # noqa: F401 unused import
 import matplotlib.pyplot as plt
 import numpy as np
 import re
-from scipy import interpolate
+from scipy import interpolate,ndimage
 from scipy.interpolate import griddata
 
 # same structure
@@ -23,7 +23,7 @@ class invertedModel:
         self.thickness.append(thick)
 
 ## when one txt file containes multiple inversion result
-filename = 'editmerg_3km_3lay.txt'
+filename = 'editmerge_3km_3lay_4.txt'
 with open(filename, 'r') as myfile:
     data=myfile.readlines()
 ## when read from individual inversion results
@@ -220,9 +220,15 @@ for k in range(extraZ.shape[0]):
 print(np.asarray(nXlist).shape)# 19*45
 print(np.asarray(nYlist).shape)# 19*45
 #plt.plot(extraX[1],extraZ[1],'o',xnew,znew,'-')
-CS =plt.contourf(np.asarray(nXlist),np.asarray(nYlist),np.asarray(nZlist),20,cmap=plt.cm.rainbow,
+CS =plt.contourf(np.asarray(nYlist),np.asarray(nXlist),np.asarray(nZlist),20,cmap=plt.cm.rainbow,
         vmax=5000,vmin=0)
+# Rotate this!
 plt.colorbar()
+# for downward y 
+plt.gca().invert_yaxis()
+## ugly scatter dots.(NG)
+#plt.scatter(nYlist[1],nXlist[1],nZlist[1])
+print(nYlist[1],nXlist[1],nZlist[1])
 plt.show()
 fig = plt.figure()
 #plt.matshow(np.transpose(zMat))
