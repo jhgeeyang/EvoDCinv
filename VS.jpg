@@ -1,0 +1,5 @@
+
+Usage: /home/madagascar/bin/vpconvert [format=] file.vpl [file2.vpl file3.vpl | file.other]
+
+Supported formats: avi eps gif jpeg jpg mpeg mpg pdf png ppm ps svg tif tiff vpl
+    

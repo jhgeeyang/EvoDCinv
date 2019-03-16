@@ -1,3 +1,4 @@
+# Draws Concat Velocity model
 import os
 from mpl_toolkits.mplot3d import Axes3D  # noqa: F401 unused import
 import matplotlib.pyplot as plt
@@ -24,6 +25,7 @@ class invertedModel:
 
 ## when one txt file containes multiple inversion result
 filename = 'editmerge_3km_3lay_4.txt'
+#filename = 'editsynth.txt'
 with open(filename, 'r') as myfile:
     data=myfile.readlines()
 ## when read from individual inversion results
@@ -229,7 +231,8 @@ plt.gca().invert_yaxis()
 ## ugly scatter dots.(NG)
 #plt.scatter(nYlist[1],nXlist[1],nZlist[1])
 print(nYlist[1],nXlist[1],nZlist[1])
-plt.show()
+plt.savefig('vel.png',bbox_inches='tight')
+#plt.show()
 fig = plt.figure()
 #plt.matshow(np.transpose(zMat))
 ax1 =fig.add_subplot(111)
@@ -241,6 +244,6 @@ ax1 =fig.add_subplot(111)
 #ax4.scatter(X,Y,Z)
 #plt.contourf(X,Y,Z)
 
-plt.show()
+#plt.show()
 
             

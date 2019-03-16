@@ -19,12 +19,15 @@ except ImportError:
 if __name__ == "__main__":
     # Parameters
     #vel = np.loadtxt("data/true_model.txt")
-    vel = np.loadtxt("DAS_3km_063_5_lay_3_edit.txt")
-    modes = [ int(i) for i in np.arange(3) ]
+# D_4.0_066_1_lay_3.txt 
+
+#    vel = np.loadtxt("D_4.0_066_1_lay_3_edit.txt")
+    vel = np.loadtxt("DAS_3km_099_5_lay_3_edit.txt")
+    modes = [ int(i) for i in np.arange(1) ]
     # frequency map
-    fmin, fmax, df = 0.1, 1., 0.1
+    fmin, fmax, df = 0.2, 1.5, 0.05
     f = np.arange(fmin, fmax+df, df)
-    ny = 200
+    ny = 20
     n_threads = 8
     
     # Initialize figure
@@ -41,7 +44,7 @@ if __name__ == "__main__":
     for dcurve in dcurves:
 # draw each curves
         dcurve.plot(axes = ax1, plt_kws = dict(color = "white", linewidth = 0.5))
-    true =np.loadtxt("./data/DAS_pick_3km/DAS_3km_063.txt")
+    true =np.loadtxt("./data/DAS_pick_3km/DAS_3km_066.txt")
     print(dcurves[0]._phase_velocity)
     print(dcurves[0]._faxis)
     print(true[0])

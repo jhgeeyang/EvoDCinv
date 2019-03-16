@@ -22,7 +22,8 @@ except ImportError:
     
 
 ## generate curve list 
-curvelist =glob.glob("./data/DAS_pick_3km/*.txt")
+# input: picked curve data
+curvelist =glob.glob("./data/DAS_pick_4km/*.txt")
 
 ## generate curve tuple - inside loop
 ## tag the curve filename in the inversion result
@@ -75,7 +76,7 @@ for curve in curvelist:
 
         # Evolutionary optimizer parameters
         ## Edit this for loop control
-        evo_kws = dict(popsize = 20, max_iter = 30, constrain = True, mpi = mpi_exist)
+        evo_kws = dict(popsize = 20, max_iter = 100, constrain = True, mpi = mpi_exist)
         opt_kws = dict(solver = "cpso")
             
         # Multiple inversions
@@ -101,7 +102,7 @@ for curve in curvelist:
         if mpi_rank == 0:
 # useful Output part
 # but anyhow only one output is written(4 in console)
-            with open(curve[20:-4]+'_5_lay_3.txt','w') as f:
+            with open(curve[20:-4]+'_1_lay_3.txt','w') as f:
                 saved_stdout = sys.stdout
                 sys.stdout = f
                 print("\n")

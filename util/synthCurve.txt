@@ -1,0 +1,289 @@
+Inverting dispersion curves: 100.0% 
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1283.84		642.35		111.77
+		2430.30		1356.98		384.51
+		6411.86		3279.22		99999.0
+       misfit: 33.34
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 969.47 seconds
+
+Inverting dispersion curves: 100.0%
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1104.00		688.51		111.50
+		2755.97		1497.28		446.44
+		4989.55		2974.79		99999.0
+       misfit: 25.30
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 973.86 seconds
+
+Inverting dispersion curves: 100.0%
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1144.33		655.39		101.83
+		2006.83		1328.13		208.34
+		5013.70		2424.75		99999.0
+       misfit: 17.41
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 981.98 seconds
+
+Inverting dispersion curves: 100.0%
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1042.18		689.60		100.00
+		2428.03		1514.29		190.86
+		2777.09		1807.14		99999.0
+       misfit: 19.57
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 982.21 seconds
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1343.73		640.02		105.31
+		2402.40		1227.37		272.21
+		4192.37		2543.17		99999.0
+       misfit: 21.94
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 978.48 seconds
+
+Inverting dispersion curves: 100.0%
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1250.98		643.02		103.81
+		1987.43		1316.18		226.25
+		4530.49		2255.83		99999.0
+       misfit: 22.94
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 981.55 seconds
+
+Inverting dispersion curves: 100.0%
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1056.44		677.74		102.90
+		2600.56		1476.35		345.93
+		3556.24		2355.12		99999.0
+       misfit: 19.71
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 981.81 seconds
+
+Inverting dispersion curves: 100.0%
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1080.23		669.34		105.39
+		2339.55		1512.81		307.68
+		5557.10		2868.84		99999.0
+       misfit: 20.28
+       n_iter: 30
+       n_eval: 600
+model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1437.70		657.14		118.53
+		2659.28		1279.71		250.92
+		3529.09		1833.44		99999.0
+       misfit: 23.84
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 968.85 seconds
+
+Inverting dispersion curves: 100.0%
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1386.09		657.96		115.17
+		2529.93		1269.65		242.68
+		3017.77		1972.99		99999.0
+       misfit: 21.84
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 974.60 seconds
+
+Inverting dispersion curves: 100.0%
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1059.69		701.72		111.30
+		2932.60		1665.63		459.29
+		2056.46		1181.35		99999.0
+       misfit: 26.17
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 982.32 seconds
+
+Inverting dispersion curves: 100.0%
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1070.25		637.47		100.00
+		2312.06		1350.86		208.39
+		3331.75		1911.04		99999.0
+       misfit: 25.50
+       n_iter: 30
+       n_eval: 600
+ model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1104.19		708.19		115.84
+		2638.67		1745.74		456.26
+		5951.44		3941.35		99999.0
+       misfit: 32.40
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 982.22 seconds
+
+Inverting dispersion curves: 100.0%
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1340.46		630.13		101.48
+		2107.61		1232.02		275.95
+		5456.19		3603.83		99999.0
+       misfit: 26.02
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 988.82 seconds
+
+Inverting dispersion curves: 100.0%
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1291.66		642.82		102.81
+		1922.16		1272.95		221.53
+		6305.58		2958.01		99999.0
+       misfit: 19.47
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 991.70 seconds
+
+Inverting dispersion curves: 100.0%
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1280.71		644.85		112.52
+		2252.08		1323.54		298.26
+		6034.72		3513.76		99999.0
+       misfit: 26.62
+       n_iter: 30
+       n_eval: 600
+ model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1055.97		673.39		106.00
+		2649.83		1478.14		365.89
+		6260.73		3131.27		99999.0
+       misfit: 22.23
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 977.16 seconds
+
+Inverting dispersion curves: 100.0%
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1043.80		673.70		106.17
+		2687.63		1632.75		422.79
+		3008.01		1991.93		99999.0
+       misfit: 22.45
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 979.73 seconds
+
+Inverting dispersion curves: 100.0%
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1229.94		662.99		110.06
+		2019.07		1334.21		206.21
+		4142.61		2352.18		99999.0
+       misfit: 18.83
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 981.06 seconds
+
+Inverting dispersion curves: 100.0%
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1169.68		655.78		105.50
+		2249.36		1336.92		275.35
+		5668.88		2612.90		99999.0
+       misfit: 20.47
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 981.14 seconds
+model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1134.46		666.24		111.98
+		2986.46		1414.00		306.14
+		3602.81		1898.90		99999.0
+       misfit: 26.26
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 967.25 seconds
+
+Inverting dispersion curves: 100.0%
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1016.63		660.50		94.87
+		2452.67		1315.02		214.35
+		4330.68		2002.05		99999.0
+       misfit: 26.53
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 973.70 seconds
+
+Inverting dispersion curves: 100.0%
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1209.77		625.77		84.48
+		2010.49		952.98		130.07
+		3185.30		1639.89		99999.0
+       misfit: 16.19
+       n_iter: 30
+       n_eval: 600
+
+Elapsed time: 975.56 seconds
+
+Inverting dispersion curves: 100.0%
+
+        model: 
+		VP (m/s)	VS (m/s)	Thickness (m)
+		1042.97		673.60		105.04
+		2886.57		1482.04		333.94
+		2961.91		1919.55		99999.0
+       misfit: 20.94
+       n_iter: 30
+       n_eval: 600
+

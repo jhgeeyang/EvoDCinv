@@ -5,7 +5,18 @@ import itertools
 #filename ='data_60_4km_D_002.txt'
 #filename='procD_n604km_002.txt' 
 #filename ='D_merg2.txt'
-filename = 'merge_3km_3lay_4.txt'
+#filename ='5lay_3.0_.txt'
+filename ='invResult_0315_DAS.txt'
+#filename = 'merge_3km_3lay_4.txt'
+with open(filename, 'r') as myfile:
+# this will read the whole file / cf.) readlines()
+    data=myfile.read()
+# delete the blank line
+text = "\n".join([ll.rstrip() for ll in data.splitlines() if ll.strip()])
+print(text)
+file2 = open(filename,'w')
+file2.write(text)
+file2.close()
 
 with open(filename, 'r') as myfile:
 # this will read the whole file / cf.) readlines()
@@ -13,14 +24,14 @@ with open(filename, 'r') as myfile:
 # delete the blank line
 text = "\n".join([ll.rstrip() for ll in data.splitlines() if ll.strip()])
 print(text)
-file2 = open("merg.txt",'w')
+file2 = open("synth_char.txt",'w')
 file2.write(text)
 file2.close()
 
 ## Remove lines with unwanted Letters
 
 # read text file
-with open('merg.txt', 'r') as myfile:
+with open('synth_char.txt', 'r') as myfile:
 # this will read the whole file / cf.) readlines()
     data=myfile.readlines()
 bag_of_words = ["curves","Inverting","Elapsed","Inverting","model","n_iter:","n_eval:"]

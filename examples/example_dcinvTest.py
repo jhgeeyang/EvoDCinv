@@ -39,21 +39,32 @@ if __name__ == "__main__":
     # Parameters
     ny = 200                        # Number of velocity discretization points
     max_run = 10                    # Number of runs
-    outdir = "test_0118_4layer"               # Output directory
+    outdir = "test_ewe"               # Output directory
     
     # Inversion boundaries
     # - params
     # - beta: S-wave boundaries in m/s
-    beta = np.array([ [ 100., 1000. ], [ 500., 2500. ], [ 1000., 4000. ],[1200.,4200. ]])
+## TestParam for 2.0 thickness Ratio
+   # beta = np.array([ [ 100., 1000. ], [ 500., 2500. ], [ 1000., 4000. ],[ 1000., 4000. ],[ 1000., 4000. ]])#,[1200.,4200. ]])
     # - NOTE: final layer 
-    thickness = np.array([ [ 100., 1000. ], [ 100., 500. ],[100.,1000.] ,[ 99999., 99999. ] ])
+   # thickness = np.array([ [ 20., 60. ], [ 30., 60. ] ,[60.,120],[120.,240.],[ 99999., 99999. ] ])
+## TestParam for 3.0 thickness Ratio  
+#    beta = np.array([ [ 100., 1000. ], [ 500., 2500. ], [ 1000., 4000. ],[ 1000., 4000. ],[ 1000., 4000. ]])#,[1200.,4200. ]])
+    # - NOTE: final layer 
+#    thickness = np.array([ [ 20., 60. ], [ 30., 60. ] ,[60.,180],[120.,660.],[ 99999., 99999. ] ])
+## TestParams 3.0 for DAS data
+    beta = np.array([ [ 100., 1000. ], [ 500., 2500. ], [ 1000., 4000. ],[ 1000., 4000. ]])#,[1200.,4200. ]])
+    # - NOTE: final layer 
+    thickness = np.array([ [ 40., 100. ], [ 50., 200. ] ,[500.,1200],[ 99999., 99999. ] ])
     
     # Initialize dispersion curves
     # - param in tuple. filename, wtype, mode
     # data- frequency list - phase vel
     # - 97 data points in the example
+        #( "data/ewe_mode0.txt", "rayleigh", 0 ),
     disp_param = [
-        ( "data/picked_das_decon.txt", "rayleigh", 0 ),
+        ( "data/HRLRT/test2.5kDm--060.txt","rayleigh", 0 ),
+
         ]
     
     dcurves = []
@@ -88,8 +99,9 @@ if __name__ == "__main__":
             models.append(deepcopy(lm))
             progress(i, max_run, "perc", prefix = "Inverting dispersion curves: ")
         
-    if mpi_rank == 0:
-        print("\n")
+#    if mpi_rank == 0:
+    with open('invResult.txt',"a") as myfile:
+        print("\n",file=myfile)
         misfits = [ m.misfit for m in models ]
-        print(models[np.argmin(misfits)])
-        print("Elapsed time: %.2f seconds\n" % (time.time() - starttime))
+        print(models[np.argmin(misfits)],file=myfile)
+        print("Elapsed time: %.2f seconds\n" % (time.time() - starttime),file=myfile)
