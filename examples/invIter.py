@@ -59,7 +59,7 @@ while(iternum < maxnum):
 ## TestParams 3.0 for DAS data
         beta = np.array([ [ 100., 1000. ], [ 500., 2500. ], [ 1000., 4000. ],[ 1000., 4000. ]])#,[1200.,4200. ]])
         # - NOTE: final layer 
-        thickness = np.array([ [ 200., 500. ], [ 250., 800. ] ,[500.,1200],[ 99999., 99999. ] ])
+        thickness = np.array([ [ 100., 500. ], [ 250., 800. ] ,[500.,1200],[ 99999., 99999. ] ])
             # Initialize dispersion curves
             # - param in tuple. filename, wtype, mode
             # data- frequency list - phase vel
@@ -102,7 +102,7 @@ while(iternum < maxnum):
                 progress(i, max_run, "perc", prefix = "Inverting dispersion curves: ")
             
 #    if mpi_rank == 0:
-        with open('invResult_0315_DAS.txt',"a") as myfile:
+        with open('invResult_0318_DAS.txt',"a") as myfile:
             print("\n",file=myfile)
             misfits = [ m.misfit for m in models ]
             print(models[np.argmin(misfits)],file=myfile)

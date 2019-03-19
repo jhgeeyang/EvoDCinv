@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import re
 from scipy.interpolate import griddata
+from scipy.stats import gaussian_kde
 
 # same structure
 # Label
@@ -26,7 +27,8 @@ class invertedModel:
 #filename='editmerged_3km_2.txt'
 #filename = 'editsynth5.txt'
 filename = 'editinv5temp_.txt'
-filename = 'editinvResult_0315_DAS.txt'
+#filename = 'editinvResult_0315_DAS.txt'
+filename = 'editinvResult_0318_DAS.txt'
 #filename='edit5lay_3.0_.txt'
 with open(filename, 'r') as myfile:
     data=myfile.readlines()
@@ -142,6 +144,11 @@ avgMode = invertedModel(); # Create an Empty Model to collect all model values
 avgMode.thickness =np.zeros(5)
 avgMode.VS=np.zeros(5)
 
+# variable to collect the stair points in plot
+x_collect=[]
+y_collect=[]
+
+## Plot and Binning
 for model in modelList:
     misfit_list.append(model.misfit)
 # shape of cumsum (3,)
@@ -160,6 +167,10 @@ for model in modelList:
         #ax.step(model.VS,np.concatenate( ([0],np.cumsum(model.thickness)) )[:-1] ,'o--')
 # PLOT
         ax.step(fixModel,np.concatenate( ([0],np.cumsum(model.thickness)) ),'o--',alpha=0.3,color="0.5")
+#        print(model.VS,np.concatenate( ([0],np.cumsum(model.thickness)[0:-1])) )
+
+        x_collect.append(model.VS[:-1])
+        y_collect.append(np.concatenate( ([0],np.cumsum(model.thickness)[0:-2]) ))
 
         #ax.step(model.VS,newThick[:-1],'o--')
         #ax.step(model.VS,np.cumsum(model.thickness),'o--')
@@ -175,7 +186,7 @@ for model in modelList:
 # Plot Best Model
 bestIndex = misfit_list.index(min(misfit_list))
 print("lowest misfit: " + str(min(misfit_list)))
-print(sorted(range(len(misfit_list)), key=lambda i : misfit_list[i])[0:2])
+#print(sorted(range(len(misfit_list)), key=lambda i : misfit_list[i])[0:2])
 print("highest misfit: " + str(max(misfit_list)))
 val=modelList[bestIndex].VS[-1]
 fixModel = modelList[bestIndex].VS+[val]
@@ -197,4 +208,38 @@ ax.step(avgMode.VS,avgMode.thickness,'D')
 
 plt.show()
 
-            
+
+x_ravel =np.asarray(x_collect).ravel()
+y_ravel =np.asarray(y_collect).ravel()
+print(x_ravel.shape)
+print(y_ravel.shape)
+
+# hist2D was UGLY
+# for new window
+plt.figure()
+
+plt.hist2d(x_ravel,y_ravel,bins=[16,40],cmap='Blues')
+#plt.hist2d(np.asarray(x_collect).ravel(),np.asarray(y_collect).ravel(),bins=100,cmap='Blues')
+cb = plt.colorbar()
+cb.set_label('count in Bin')
+plt.xlim(left=min(x_ravel),right=max(x_ravel))
+plt.ylim(bottom=min(y_ravel),top=max(y_ravel))
+#plt.ylim(ymin=0,ymax=2000)
+plt.show()
+
+# TRY KDE
+'''
+plt.figure()
+
+kde_data = np.vstack([x_ravel,y_ravel])
+kde = gaussian_kde(kde_data)            
+xgrid = np.linspace(0,max(x_ravel),200)
+ygrid = np.linspace(min(y_ravel),max(y_ravel),200)
+Xgrid, Ygrid = np.meshgrid(xgrid,ygrid)
+Z = kde.evaluate(np.vstack([Xgrid.ravel(),Ygrid.ravel()]))
+#extent=[0,4000,0,1000]
+plt.imshow(Z.reshape(Xgrid.shape).T,origin='lower',aspect='auto',cmap='Blues')
+cb = plt.colorbar()
+cb.set_label("density")
+plt.show()
+'''
