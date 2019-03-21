@@ -131,7 +131,27 @@ plt.show()
 # CODE run
 misfit_list = []
 # Let's plot this
+
+## NEED TO PLOT INVERSION BOUNDARIES.(LOWEST - HIGHEST)
+par_beta = np.array([ [ 100., 1000. ], [ 500., 2500. ], [ 1000., 4000. ],[ 1000., 4000. ]])#,[1200.,4200. ]])
+low_beta = par_beta[:,0]
+high_beta = par_beta[:,1]
+
+# - NOTE: final layer 
+par_thick = np.array([ [ 100., 500. ], [ 250., 800. ] ,[500.,1200],[ 99999., 99999. ] ])
+low_thick = par_thick[:,0]
+high_thick = par_thick[:,1]
+
 fig, ax = plt.subplots()
+print(low_beta)
+print(high_beta)
+print(np.concatenate( ([0],low_thick) )[0:-1])
+print(np.concatenate( ([0],high_thick) )[0:-1])
+print(np.concatenate( ([0],np.cumsum(high_thick)) )[0:-1])
+
+# PLOT LOW / HIGH BOUND
+#val=low_beta[-1]
+#fixModel = model.VS+[val]
 # TRUE - 2 Data
 DataIn = np.loadtxt('../examples/data/trueVS/mid.txt')
 #ax.step(DataIn[:,1],DataIn[:,0],'*')
@@ -166,7 +186,7 @@ for model in modelList:
 
         #ax.step(model.VS,np.concatenate( ([0],np.cumsum(model.thickness)) )[:-1] ,'o--')
 # PLOT
-        ax.step(fixModel,np.concatenate( ([0],np.cumsum(model.thickness)) ),'o--',alpha=0.3,color="0.5")
+        ax.step(fixModel,np.concatenate( ([0],np.cumsum(model.thickness)) ),'o--',alpha=0.1,color="0.4")
 #        print(model.VS,np.concatenate( ([0],np.cumsum(model.thickness)[0:-1])) )
 
         x_collect.append(model.VS[:-1])
@@ -176,11 +196,11 @@ for model in modelList:
         #ax.step(model.VS,np.cumsum(model.thickness),'o--')
         ax.xaxis.tick_top()
 
-        ax.set_ylabel('depth')
+        ax.set_ylabel('Depth (m)')
         ax.set_ylim(880, 0)
         exitCount = exitCount +1
 #ax.set_xlim(0, 25)
-        ax.set_xlabel('vel - depth plot')
+        ax.set_xlabel('S-Wave velocity (m/s)')
     else:
         break
 # Plot Best Model
@@ -195,7 +215,7 @@ ax.step(fixModel,np.concatenate( ([0],np.cumsum(modelList[bestIndex].thickness))
 for goodIndex in sorted(range(len(misfit_list)), key=lambda i : misfit_list[i])[1:10]:
     val=modelList[goodIndex].VS[-1]
     fixModel = modelList[goodIndex].VS+[val]
-    ax.step(fixModel,np.concatenate( ([0],np.cumsum(modelList[goodIndex].thickness)) ),'*')
+    ax.step(fixModel,np.concatenate( ([0],np.cumsum(modelList[goodIndex].thickness)) ),'*',color='green')
 #ax.step(modelList[63].VS,modelList[63].thickness,'X')
 # Plot Avg Model
 print(max(misfit_list),min(misfit_list))
@@ -206,6 +226,10 @@ avgMode.thickness = avgMode.thickness/len(modelList)
 avgMode.VS= np.asarray(avgMode.VS)/len(modelList)
 ax.step(avgMode.VS,avgMode.thickness,'D')
 
+#LASTLY the red DASH
+ax.plot(np.append(low_beta,low_beta[-1]),np.concatenate( ([0],np.cumsum(low_thick)) ),linestyle='--',drawstyle='steps',color='red')
+ax.plot(np.append(high_beta,high_beta[-1]),np.concatenate( ([0],np.cumsum(low_thick)) ),linestyle='--',drawstyle='steps',color='red')
+plt.savefig('inv.png')
 plt.show()
 
 
@@ -218,7 +242,8 @@ print(y_ravel.shape)
 # for new window
 plt.figure()
 
-plt.hist2d(x_ravel,y_ravel,bins=[16,40],cmap='Blues')
+#BLUES OR
+plt.hist2d(x_ravel,y_ravel,bins=[16,40],cmap='viridis')
 #plt.hist2d(np.asarray(x_collect).ravel(),np.asarray(y_collect).ravel(),bins=100,cmap='Blues')
 cb = plt.colorbar()
 cb.set_label('count in Bin')
@@ -238,6 +263,7 @@ ygrid = np.linspace(min(y_ravel),max(y_ravel),200)
 Xgrid, Ygrid = np.meshgrid(xgrid,ygrid)
 Z = kde.evaluate(np.vstack([Xgrid.ravel(),Ygrid.ravel()]))
 #extent=[0,4000,0,1000]
+# Blues or
 plt.imshow(Z.reshape(Xgrid.shape).T,origin='lower',aspect='auto',cmap='Blues')
 cb = plt.colorbar()
 cb.set_label("density")
