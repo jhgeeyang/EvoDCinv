@@ -4,6 +4,7 @@ import numpy as np
 import re
 from scipy.interpolate import griddata
 from scipy.stats import gaussian_kde
+from matplotlib.lines import Line2D
 
 # same structure
 # Label
@@ -227,6 +228,18 @@ avgMode.VS= np.asarray(avgMode.VS)/len(modelList)
 ax.step(avgMode.VS,avgMode.thickness,'D')
 
 #LASTLY the red DASH
+##ax.legend(['result','bound']) NG
+
+## Create custom legend with Line2D
+custom_lines = [Line2D([0], [0], color='red',linestyle='dashed', lw=2),
+                Line2D([0], [0], color='orange', lw=2),
+                Line2D([0], [0], color='green', lw=2)]
+
+#fig, ax = plt.subplots()
+#lines = ax.plot(data)
+ax.legend(custom_lines, ['Bound', 'Average', 'best-fit'])
+
+##
 ax.plot(np.append(low_beta,low_beta[-1]),np.concatenate( ([0],np.cumsum(low_thick)) ),linestyle='--',drawstyle='steps',color='red')
 ax.plot(np.append(high_beta,high_beta[-1]),np.concatenate( ([0],np.cumsum(low_thick)) ),linestyle='--',drawstyle='steps',color='red')
 plt.savefig('inv.png')
@@ -237,6 +250,7 @@ x_ravel =np.asarray(x_collect).ravel()
 y_ravel =np.asarray(y_collect).ravel()
 print(x_ravel.shape)
 print(y_ravel.shape)
+
 
 # hist2D was UGLY
 # for new window
