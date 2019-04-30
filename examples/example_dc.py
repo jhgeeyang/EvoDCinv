@@ -18,16 +18,16 @@ except ImportError:
 
 if __name__ == "__main__":
     # Parameters
-    #vel = np.loadtxt("data/true_model.txt")
+    vel = np.loadtxt("data/true_model.txt")
 # D_4.0_066_1_lay_3.txt 
 
 #    vel = np.loadtxt("D_4.0_066_1_lay_3_edit.txt")
-    vel = np.loadtxt("DAS_3km_099_5_lay_3_edit.txt")
+#    vel = np.loadtxt("DAS_3km_099_5_lay_3_edit.txt")
     modes = [ int(i) for i in np.arange(1) ]
     # frequency map
-    fmin, fmax, df = 0.2, 1.5, 0.05
+    fmin, fmax, df = 0.2, 10, 0.05
     f = np.arange(fmin, fmax+df, df)
-    ny = 20
+    ny = 10
     n_threads = 8
     
     # Initialize figure
@@ -43,15 +43,16 @@ if __name__ == "__main__":
     dcurves = th.pick(modes)
     for dcurve in dcurves:
 # draw each curves
-        dcurve.plot(axes = ax1, plt_kws = dict(color = "white", linewidth = 0.5))
-    true =np.loadtxt("./data/DAS_pick_3km/DAS_3km_066.txt")
+        dcurve.plot(axes = ax1, plt_kws = dict(color = "white", linewidth = 2.0))
+   # true =np.loadtxt("./data/DAS_pick_3km/DAS_3km_066.txt")
+    true =np.loadtxt("./data/rayleigh_mode0.txt")
     print(dcurves[0]._phase_velocity)
     print(dcurves[0]._faxis)
     print(true[0])
     trueDC = DispersionCurve(true[:,1],true[:,0],0)
     print(trueDC._phase_velocity)
     print(trueDC._faxis)
-    trueDC.plot(axes = ax1, plt_kws = dict(color = "red", linewidth = 0.5))
+    trueDC.plot(axes = ax1, plt_kws = dict(color = "red", linewidth = 2.0))
 
     ax1.set_title("Rayleigh-wave")
     

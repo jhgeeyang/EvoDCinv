@@ -21,7 +21,7 @@ except ImportError:
     from evodcinv import DispersionCurve, LayeredModel, progress
     
 iternum = 0
-maxnum = 1000
+maxnum = 1500
 while(iternum < maxnum):
     iternum = iternum + 1
     if __name__ == "__main__":
@@ -57,7 +57,7 @@ while(iternum < maxnum):
 #        thickness = np.array([ [ 20., 60. ], [ 30., 60. ] ,[60.,180],[120.,200.],[ 99999., 99999. ] ])
         
 ## TestParams 3.0 for DAS data
-        beta = np.array([ [ 100., 1000. ], [ 500., 2500. ], [ 1000., 4000. ],[ 1000., 4000. ]])#,[1200.,4200. ]])
+        beta = np.array([ [ 1500., 2300. ], [ 750., 2300. ], [ 750., 4000. ],[ 1000., 4000. ]])#,[1200.,4200. ]])
         # - NOTE: final layer 
         thickness = np.array([ [ 100., 500. ], [ 250., 800. ] ,[500.,1200],[ 99999., 99999. ] ])
             # Initialize dispersion curves

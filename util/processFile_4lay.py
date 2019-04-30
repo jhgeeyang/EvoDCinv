@@ -133,8 +133,9 @@ plt.show()
 misfit_list = []
 # Let's plot this
 
+### RED LINES
 ## NEED TO PLOT INVERSION BOUNDARIES.(LOWEST - HIGHEST)
-par_beta = np.array([ [ 100., 1000. ], [ 500., 2500. ], [ 1000., 4000. ],[ 1000., 4000. ]])#,[1200.,4200. ]])
+par_beta = np.array([ [ 600., 2300. ], [ 700., 2400. ], [ 750., 4000. ],[ 1000., 4000. ]])#,[1200.,4200. ]])
 low_beta = par_beta[:,0]
 high_beta = par_beta[:,1]
 
@@ -187,7 +188,7 @@ for model in modelList:
 
         #ax.step(model.VS,np.concatenate( ([0],np.cumsum(model.thickness)) )[:-1] ,'o--')
 # PLOT
-        ax.step(fixModel,np.concatenate( ([0],np.cumsum(model.thickness)) ),'o--',alpha=0.1,color="0.4")
+  #      ax.step(fixModel,np.concatenate( ([0],np.cumsum(model.thickness)) ),'o--',alpha=0.1,color="0.4")
 #        print(model.VS,np.concatenate( ([0],np.cumsum(model.thickness)[0:-1])) )
 
         x_collect.append(model.VS[:-1])
@@ -198,7 +199,7 @@ for model in modelList:
         ax.xaxis.tick_top()
 
         ax.set_ylabel('Depth (m)')
-        ax.set_ylim(880, 0)
+        ax.set_ylim(700, 0)
         exitCount = exitCount +1
 #ax.set_xlim(0, 25)
         ax.set_xlabel('S-Wave velocity (m/s)')
@@ -209,15 +210,20 @@ bestIndex = misfit_list.index(min(misfit_list))
 print("lowest misfit: " + str(min(misfit_list)))
 #print(sorted(range(len(misfit_list)), key=lambda i : misfit_list[i])[0:2])
 print("highest misfit: " + str(max(misfit_list)))
-val=modelList[bestIndex].VS[-1]
-fixModel = modelList[bestIndex].VS+[val]
-ax.step(fixModel,np.concatenate( ([0],np.cumsum(modelList[bestIndex].thickness)) ),'X')
 # Draw the top models
+# Top10
 for goodIndex in sorted(range(len(misfit_list)), key=lambda i : misfit_list[i])[1:10]:
     val=modelList[goodIndex].VS[-1]
+    print(misfit_list[goodIndex])
     fixModel = modelList[goodIndex].VS+[val]
     ax.step(fixModel,np.concatenate( ([0],np.cumsum(modelList[goodIndex].thickness)) ),'*',color='green')
 #ax.step(modelList[63].VS,modelList[63].thickness,'X')
+    
+##BEST
+val=modelList[bestIndex].VS[-1]
+fixModel = modelList[bestIndex].VS+[val]
+ax.step(fixModel,np.concatenate( ([0],np.cumsum(modelList[bestIndex].thickness)) ),'X',color='blue',linewidth=3)
+
 # Plot Avg Model
 print(max(misfit_list),min(misfit_list))
 print(misfit_list.index(max(misfit_list)),misfit_list.index(min(misfit_list)))
@@ -225,25 +231,27 @@ print(avgMode.thickness)
 print(avgMode.VS)
 avgMode.thickness = avgMode.thickness/len(modelList)
 avgMode.VS= np.asarray(avgMode.VS)/len(modelList)
-ax.step(avgMode.VS,avgMode.thickness,'D')
+#ax.step(avgMode.VS,avgMode.thickness,'D',color='orange')
 
 #LASTLY the red DASH
 ##ax.legend(['result','bound']) NG
 
+                #Line2D([0], [0], color='orange', lw=2),
 ## Create custom legend with Line2D
 custom_lines = [Line2D([0], [0], color='red',linestyle='dashed', lw=2),
-                Line2D([0], [0], color='orange', lw=2),
-                Line2D([0], [0], color='green', lw=2)]
+                Line2D([0], [0], color='green', lw=2),
+                Line2D([0], [0], color='blue', lw=2)]
 
 #fig, ax = plt.subplots()
 #lines = ax.plot(data)
-ax.legend(custom_lines, ['Bound', 'Average', 'best-fit'])
+ax.legend(custom_lines, ['Bounds',  'top 10','best fit'])
 
 ##
 ax.plot(np.append(low_beta,low_beta[-1]),np.concatenate( ([0],np.cumsum(low_thick)) ),linestyle='--',drawstyle='steps',color='red')
 ax.plot(np.append(high_beta,high_beta[-1]),np.concatenate( ([0],np.cumsum(low_thick)) ),linestyle='--',drawstyle='steps',color='red')
-plt.savefig('inv.png')
-plt.show()
+plt.savefig('1DInv.png',transparent='true')
+#plt.savefig('inv.png')
+#plt.show()
 
 
 x_ravel =np.asarray(x_collect).ravel()
@@ -251,7 +259,7 @@ y_ravel =np.asarray(y_collect).ravel()
 print(x_ravel.shape)
 print(y_ravel.shape)
 
-
+##########################33
 # hist2D was UGLY
 # for new window
 plt.figure()
